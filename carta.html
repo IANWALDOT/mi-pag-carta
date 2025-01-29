@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Interactivo</title>
+    <link rel="stylesheet" href="carta.css">
+    <!-- Firebase App (SDK principal) -->
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js"></script>
+
+<!-- Tu configuración de Firebase -->
+<script>
+    // Configuración de Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyCH_gTWG8qWUW5pJ2JYmCj806xn7W36T-w",
+        authDomain: "miproyectocartabd.firebaseapp.com",
+        projectId: "miproyectocartabd",
+        storageBucket: "miproyectocartabd.firebasestorage.app",
+        messagingSenderId: "241898580201",
+        appId: "1:241898580201:web:6b2941ff46ffc2d2576878"
+    };
+
+    // Inicializar Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+
+    // Inicializar Firestore
+    const db = firebase.firestore();
+</script>
+
+</head>
+<body>
+
+<img id="imgsnoopycorazon" src="imagenes/snoopycorazon.png" alt="snoopy" ondblclick="iniciodesesion()">
+<img id="imgnube1_2" src="imagenes/nube1.png" alt="" class="moving-image1_2">
+<img id="imgnube1" src="imagenes/nube3.png" alt="" class="moving-image1">
+<img id="imgnube2" src="imagenes/nube2.png" alt="" class="moving-image2">
+<img id="imgnube2_2" src="imagenes/nube4.png" alt="" class="moving-image2_2">
+<img id="imgnube3" src="imagenes/nube3.png" alt="" class="moving-image3">
+<img id="imgnube3_3" src="imagenes/nube7.png" alt="" class="moving-image3_3">
+<img id="imgnube4" src="imagenes/nube4.png" alt="" class="moving-image4">
+<img id="imgnube4_4" src="imagenes/nube6.png" alt="" class="moving-image4_4">
+<img id="imgnube5" src="imagenes/nube5.png" alt="" class="moving-image5">
+<img id="imgnube5_5" src="imagenes/nube4.png" alt="" class="moving-image5_5">
+
+<!-- Contenedor del sobre -->
+<div class="envelope" onclick="openEnvelope()">
+    <div class="envelope-flap"></div> <!-- Flap triangular del sobre -->
+    <div class="envelope-body"></div> <!-- Cuerpo del sobre -->
+</div>
+<div class="label">Siguiente texto:</div>
+<div id="countdown">Cargando...</div>
+
+<!-- Carta oculta inicialmente -->
+<div class="card">
+    <div class="front">Hola</div>
+    <div class="back">Aquí está el mensaje secreto</div>
+</div>
+
+<script src="carta.js"></script>
+</body>
+</html>

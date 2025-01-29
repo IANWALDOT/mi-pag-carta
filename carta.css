@@ -1,0 +1,445 @@
+/* Estilo general para centrar contenido y dar un fondo neutro */
+body {
+    font-family: Arial, sans-serif;
+    display: flex; /* Usamos flexbox para centrar elementos */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    height: 100vh; /* Altura completa de la ventana */
+    margin: 0; /* Eliminamos márgenes por defecto */
+    background-color: #ffc5e5; /* Color de fondo */
+    overflow: hidden;
+}
+
+/*estilos para el contador */
+#countdown {
+    position: absolute;
+    top: 470px;
+    left: 690px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #af44a6;
+    padding: 7px;
+    border: 2px solid #912c66;
+    border-radius: 15px;
+    background-color: #ffbaf9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/*estilos para el label del contador*/
+.label {
+    position: absolute;
+    top: 475px;
+    left: 500px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #912c66;
+    z-index: 10;
+}
+
+
+/* Contenedor del sobre */
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    animation: float 3s ease-in-out infinite; /* Aplica la animación de flotación */
+    z-index: 10;
+}
+
+.envelope-flap {
+    z-index: 11;
+    position: absolute;
+    top: 43px;
+    left: -40px;
+    width: 141%;
+    height: 50%;
+    background-color: #eeeeee;
+    clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    transform-origin: top;
+    transition: transform 0.6s ease;
+    border-radius: 15px;
+    transform: rotateX(0deg); /* Rotar el triángulo al revés */
+}  /* Flap triangular del sobre */
+
+
+/* Cuerpo del sobre */
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    left: -40px;
+    width: 420px;
+    height: 85%;
+    background-color: #ffffff;
+    border: 5px solid #c9c9c9;
+    border-radius: 15px;
+    z-index: 10;
+}
+
+/* Animación al abrir el sobre */
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open {
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+
+/* Estilo para la carta */
+.card {
+    display: none;
+    position: absolute;
+    top: 190px;
+    left: 480px;
+    width: 450px;
+    height: 250px;
+    perspective: 1000px;
+    margin-top: 20px;
+    z-index: 100;
+    animation: float 3s ease-in-out infinite;
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s;
+}
+
+.front {
+    background-color: #6f8dec;
+    color: white;
+}
+
+.back {
+    background-color: #9cdef8;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.card:hover .front {
+    transform: rotateY(180deg);
+}
+
+.card:hover .back {
+    transform: rotateY(360deg);
+}
+
+/* Animación para deslizar la carta */
+@keyframes slideUp {
+    from {
+        transform: translateY(60px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@keyframes float {
+    0% {
+        transform: translateY(0); /* Posición inicial */
+    }
+    50% {
+        transform: translateY(-15px); /* Se mueve hacia arriba */
+    }
+    100% {
+        transform: translateY(0); /* Regresa a la posición inicial */
+    }
+}
+
+#imgsnoopycorazon{
+    z-index: 99;
+    animation: float 15s infinite;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+}
+
+#imgnube1{
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    width: 300px;
+    height: 150px;
+}
+
+#imgnube1_2{
+    z-index: 2;
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    width: 300px;
+    height: 150px;
+}
+
+#imgnube2{
+    z-index: 3;
+    position: absolute;
+    top: 140px;
+    left: 50px;
+    width: 240px;
+    height: 120px;
+}
+
+#imgnube2_2{
+    z-index: 3;
+    position: absolute;
+    top: 140px;
+    left: 50px;
+    width: 240px;
+    height: 120px;
+}
+
+#imgnube3{
+    z-index: 4;
+    position: absolute;
+    top: 265px;
+    left: 50px;
+    width: 240px;
+    height: 120px;
+}
+
+#imgnube3_3{
+    z-index: 4;
+    position: absolute;
+    top: 265px;
+    left: 50px;
+    width: 240px;
+    height: 120px;
+}
+
+#imgnube4{
+    z-index: 5;
+    position: absolute;
+    top: 400px;
+    left: 50px;
+    width: 240px;
+    height: 120px;
+}
+
+#imgnube4_4{
+    z-index: 5;
+    position: absolute;
+    top: 400px;
+    left: 50px;
+    width: 240px;
+    height: 120px;
+}
+
+#imgnube5{
+    z-index: 6;
+    position: absolute;
+    top: 520px;
+    left: 50px;
+    width: 240px;
+    height: 120px;
+}
+
+#imgnube5_5{
+    z-index: 6;
+    position: absolute;
+    top: 520px;
+    left: 50px;
+    width: 240px;
+    height: 120px;
+}
+
+
+
+/* Imagen que se moverá para la nube1*/
+.moving-image1 {
+    animation: moveImage1 150s linear infinite; /* Duración y repetición infinita */
+}
+
+  /* Animación de la imagen */
+@keyframes moveImage1 {
+    0% {
+      transform: translateX(-120%); /* Empieza fuera de la pantalla por la izquierda */
+    }
+    50% {
+      transform: translateX(50vw); /* Cruza el centro de la pantalla */
+    }
+    100% {
+      transform: translateX(100vw); /* Sale completamente por la derecha */
+    }
+}
+
+
+
+/* Imagen que se moverá para la nube1_2*/
+.moving-image1_2 {
+    animation: moveImage1_2 280s linear infinite; /* Duración y repetición infinita */
+}
+
+/* Animación de la imagen */
+@keyframes moveImage1_2 {
+    0% {
+        transform: translateX(-400%); /* Empieza fuera de la pantalla por la izquierda */
+    }
+    50% {
+        transform: translateX(50vw); /* Cruza el centro de la pantalla */
+    }
+    100% {
+        transform: translateX(100vw); /* Sale completamente por la derecha */
+    }
+}
+
+
+/* Imagen que se moverá para la nube2*/
+.moving-image2 {
+    animation: moveImage2 110s linear infinite; /* Duración y repetición infinita */
+}
+
+/* Animación de la imagen */
+@keyframes moveImage2 {
+    0% {
+        transform: translateX(100vw); /* sale fuera de la pantalla por la izquierda */
+    }
+    100% {
+        transform: translateX(-100%); /* empieza completamente por la derecha */
+    }
+}
+
+
+/* Imagen que se moverá para la nube2_2*/
+.moving-image2_2 {
+    animation: moveImage2_2 200s linear infinite; /* Duración y repetición infinita */
+}
+
+/* Animación de la imagen */
+@keyframes moveImage2_2 {
+    0% {
+        transform: translateX(160vw); /* sale fuera de la pantalla por la izquierda */
+    }
+    100% {
+        transform: translateX(-100%); /* empieza completamente por la derecha */
+    }
+}
+
+
+/* Imagen que se moverá para la nube3*/
+.moving-image3 {
+    animation: moveImage3 150s linear infinite; /* Duración y repetición infinita */
+}
+
+/* Animación de la imagen */
+@keyframes moveImage3 {
+    0% {
+        transform: translateX(-140%); /* Empieza fuera de la pantalla por la izquierda */
+    }
+    50% {
+        transform: translateX(50vw); /* Cruza el centro de la pantalla */
+    }
+    100% {
+        transform: translateX(120vw); /* Sale completamente por la derecha */
+    }
+}
+
+
+/* Imagen que se moverá para la nube3_3*/
+.moving-image3_3 {
+    animation: moveImage3_3 280s linear infinite; /* Duración y repetición infinita */
+}
+
+/* Animación de la imagen */
+@keyframes moveImage3_3 {
+    0% {
+        transform: translateX(-400%); /* Empieza fuera de la pantalla por la izquierda */
+    }
+    50% {
+        transform: translateX(50vw); /* Cruza el centro de la pantalla */
+    }
+    100% {
+        transform: translateX(120vw); /* Sale completamente por la derecha */
+    }
+}
+
+
+/* Imagen que se moverá para la nube4*/
+.moving-image4 {
+    animation: moveImage4 140s linear infinite; /* Duración y repetición infinita */
+}
+
+/* Animación de la imagen */
+@keyframes moveImage4 {
+    0% {
+      transform: translateX(-520%); /* Empieza fuera de la pantalla por la izquierda */
+    }
+    50% {
+      transform: translateX(50vw); /* Cruza el centro de la pantalla */
+    }
+    100% {
+      transform: translateX(120vw); /* Sale completamente por la derecha */
+    }
+}
+
+
+/* Imagen que se moverá para la nube4*/
+.moving-image4_4 {
+    animation: moveImage4_4 340s linear infinite; /* Duración y repetición infinita */
+}
+
+/* Animación de la imagen */
+@keyframes moveImage4_4 {
+    0% {
+      transform: translateX(-920%); /* Empieza fuera de la pantalla por la izquierda */
+    }
+    50% {
+      transform: translateX(50vw); /* Cruza el centro de la pantalla */
+    }
+    100% {
+      transform: translateX(120vw); /* Sale completamente por la derecha */
+    }
+}
+
+
+/* Imagen que se moverá para la nube5*/
+.moving-image5 {
+    animation: moveImage5 200s linear infinite; /* Duración y repetición infinita */
+}
+
+/* Animación de la imagen */
+@keyframes moveImage5 {
+    0% {
+      transform: translateX(-620%); /* Empieza fuera de la pantalla por la izquierda */
+    }
+    50% {
+      transform: translateX(50vw); /* Cruza el centro de la pantalla */
+    }
+    100% {
+      transform: translateX(120vw); /* Sale completamente por la derecha */
+    }
+}
+
+
+/* Imagen que se moverá para la nube5_5*/
+.moving-image5_5 {
+    animation: moveImage5_5 330s linear infinite; /* Duración y repetición infinita */
+}
+
+/* Animación de la imagen */
+@keyframes moveImage5_5 {
+    0% {
+      transform: translateX(-1020%); /* Empieza fuera de la pantalla por la izquierda */
+    }
+    50% {
+      transform: translateX(50vw); /* Cruza el centro de la pantalla */
+    }
+    100% {
+      transform: translateX(120vw); /* Sale completamente por la derecha */
+    }
+}
