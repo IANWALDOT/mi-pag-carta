@@ -1,24 +1,31 @@
 // Función que se ejecuta al hacer clic en el sobre
 function openEnvelope() {
-    // Seleccionamos el elemento del sobre
-    const envelope = document.querySelector('.envelope');
-    // Seleccionamos el elemento de la carta
-    const card = document.querySelector('.card');
-  
-    // Añadimos la clase 'open' al sobre para animarlo y abrirlo
-    envelope.classList.add('open');
-  
-    // Usamos un temporizador para realizar acciones después de la animación
-    setTimeout(() => {
-      // Cambiamos la visibilidad del sobre para ocultarlo después de la animación
+  // Seleccionamos el elemento del sobre
+  const envelope = document.querySelector('.envelope');
+  // Seleccionamos el contenedor de la carta
+  const cardContainer = document.getElementById('card-container');
+  const card = document.querySelector('.card');
+
+  //obtenemos las coordenadas del sobre
+  const envelopeRect = envelope.getBoundingClientRect();
+
+  // Añadimos la clase 'open' al sobre para la animación de apertura
+  envelope.classList.add('open');
+
+  // Usamos un temporizador para hacer aparecer la carta después del sobre
+  setTimeout(() => {
+    cardContainer.style.display = 'flex';
+      // Ocultamos el sobre con una transición suave
       envelope.style.opacity = '0';
       envelope.style.transition = 'opacity 0.5s ease';
-  
-      // Cambiamos el estilo de la carta para que sea visible con un deslizamiento hacia arriba
-      card.style.display = 'block';
-      card.style.animation = 'slideUp 0.6s ease forwards';
-    }, 600); // Esperamos 600 ms, que coincide con la duración de la animación CSS
-  }
+
+      // Hacemos visible la carta con animación
+      cardContainer.style.display = 'flex';
+      cardContainer.classList.add('show-card');
+  }, 600); // Ajusta este tiempo según la duración de tu animación
+} 
+
+
 
 
   function iniciodesesion() {

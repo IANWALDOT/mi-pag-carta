@@ -13,8 +13,8 @@ body {
 /*estilos para el contador */
 #countdown {
     position: absolute;
-    top: 470px;
-    left: 690px;
+    top: 76%;
+    left: 63%;
     font-size: 20px;
     font-weight: bold;
     color: #af44a6;
@@ -29,12 +29,12 @@ body {
 /*estilos para el label del contador*/
 .label {
     position: absolute;
-    top: 475px;
-    left: 500px;
+    top: 77%;
+    left: 5%;
     margin-bottom: 10px;
     font-size: 1.5rem;
     color: #912c66;
-    z-index: 10;
+    z-index: 100;
 }
 
 
@@ -51,10 +51,10 @@ body {
 .envelope-flap {
     z-index: 11;
     position: absolute;
-    top: 43px;
-    left: -40px;
-    width: 141%;
-    height: 50%;
+    top: 103px;
+    left: 1px;
+    width: 98%;
+    height: 40%;
     background-color: #eeeeee;
     clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
     transform-origin: top;
@@ -68,13 +68,22 @@ body {
 .envelope-body {
     position: absolute;
     bottom: 0;
-    left: -40px;
-    width: 420px;
-    height: 85%;
+    left: -0px;
+    width: 288px;
+    height: 65%;
     background-color: #ffffff;
     border: 5px solid #c9c9c9;
     border-radius: 15px;
     z-index: 10;
+}
+
+/* Contenedor principal */
+.envelope-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    position: relative; /* Para que el sobre se posicione bien */
 }
 
 /* Animación al abrir el sobre */
@@ -87,17 +96,25 @@ body {
     transition: opacity 0.9s ease;
 }
 
+/* Contenedor para la carta */
+.card-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%; /* Alinea verticalmente */
+    left: 50%; /* Alinea horizontalmente */
+    transform: translate(-50%, -50%); /* Centrado exacto */
+    z-index: 100;
+}
+
+
 /* Estilo para la carta */
 .card {
-    display: none;
-    position: absolute;
-    top: 190px;
-    left: 480px;
-    width: 450px;
-    height: 250px;
+    position: relative;
+    width: 40vh;
+    height: 35vh;
     perspective: 1000px;
-    margin-top: 20px;
-    z-index: 100;
     animation: float 3s ease-in-out infinite;
 }
 
@@ -115,12 +132,12 @@ body {
 }
 
 .front {
-    background-color: #6f8dec;
+    background-color: #f02cdf;
     color: white;
 }
 
 .back {
-    background-color: #9cdef8;
+    background-color: #ff77ff;
     color: white;
     transform: rotateY(180deg);
 }
@@ -133,18 +150,20 @@ body {
     transform: rotateY(360deg);
 }
 
+.show-card{
+    animation: slideUp 0.6s ease forwards;
+}
 /* Animación para deslizar la carta */
 @keyframes slideUp {
     from {
-        transform: translateY(60px);
+        transform: translateY(50%);
         opacity: 0;
     }
     to {
-        transform: translateY(0);
+        transform: translate(-50%);
         opacity: 1;
     }
 }
-
 
 @keyframes float {
     0% {
