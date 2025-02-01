@@ -13,7 +13,7 @@ body {
 /*estilos para el contador */
 #countdown {
     position: absolute;
-    top: 76%;
+    top: 79%;
     left: 63%;
     font-size: 20px;
     font-weight: bold;
@@ -29,8 +29,8 @@ body {
 /*estilos para el label del contador*/
 .label {
     position: absolute;
-    top: 77%;
-    left: 5%;
+    top: 80%;
+    left: 8%;
     margin-bottom: 10px;
     font-size: 1.5rem;
     color: #912c66;
