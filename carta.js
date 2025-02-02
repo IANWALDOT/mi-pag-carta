@@ -28,56 +28,50 @@ function openEnvelope() {
 
 
 
-  function iniciodesesion() {
-    window.location.href = "iniciarsesion.html";
-  }
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  const unlockTimeKey = "unlockTime";
+  const countdownElement = document.getElementById("countdown2");
+  const cardContainer = document.getElementById("card-container");
+  const envelope = document.querySelector('.envelope');
+  const card = document.querySelector('.card');
 
-  //cuenta regresiva
-  let timer;
+  // 🔹 FORZAR NUEVO TIEMPO: Borra cualquier tiempo anterior
+  localStorage.removeItem(unlockTimeKey);
 
-  function loadCountdown() {
-      const savedTime = localStorage.getItem("countdownTime");
-      if (!savedTime) {
-          document.getElementById("countdown").textContent = "No time";
+  // 🔹 NUEVO TIEMPO: Cambia este valor al que desees
+  let unlockTime = new Date();
+  unlockTime.setMinutes(unlockTime.getMinutes() + 1); // Cambia aquí el tiempo (ej. 5, 10, etc.)
+
+  // 🔹 GUARDA EL NUEVO TIEMPO en localStorage
+  localStorage.setItem(unlockTimeKey, unlockTime.getTime());
+
+  function updateCountdown() {
+      const now = new Date();
+      const storedTime = localStorage.getItem(unlockTimeKey);
+      const unlockTime = new Date(parseInt(storedTime));
+      const timeLeft = unlockTime - now;
+
+      if (timeLeft <= 0) {
+          countdownElement.innerHTML = "¡Carta desbloqueada!";
+          envelope.onclick = openEnvelope;
+          cardContainer.classList.remove("locked");
+          card.style.pointerEvents = "auto";
           return;
       }
 
-      let timeLeft = parseInt(savedTime);
+      const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-      clearInterval(timer);
-      timer = setInterval(() => {
-          const hours = Math.floor(timeLeft / 3600);
-          const minutes = Math.floor((timeLeft % 3600) / 60);
-          const seconds = timeLeft % 60;
+      countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
 
-          document.getElementById("countdown").textContent = 
-              `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      envelope.onclick = null;
+      card.style.pointerEvents = "none";
 
-          if (timeLeft <= 0) {
-              clearInterval(timer);
-              document.getElementById("countdown").textContent = "¡listo!";
-          } else {
-              timeLeft--;
-              localStorage.setItem("countdownTime", timeLeft);
-          }
-      }, 1000);
+      setTimeout(updateCountdown, 1000);
   }
 
-  // Cargar el contador al abrir la página
-  loadCountdown();
-
-
-
-  // Cargar mensajes guardados en localStorage
-function loadMessages() {
-  const frontMessage = localStorage.getItem("frontMessage") || "Hola, soy la carta";
-  const backMessage = localStorage.getItem("backMessage") || "Aquí está el mensaje secreto";
-
-  document.querySelector(".card .front").textContent = frontMessage;
-  document.querySelector(".card .back").textContent = backMessage;
-}
-
-// Llamar la función al cargar la página
-loadMessages();
+  updateCountdown();
+});

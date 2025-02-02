@@ -11,10 +11,10 @@ body {
 }
 
 /*estilos para el contador */
-#countdown {
+#countdown2{
     position: absolute;
     top: 79%;
-    left: 63%;
+    left: 57%;
     font-size: 20px;
     font-weight: bold;
     color: #af44a6;
@@ -24,6 +24,11 @@ body {
     background-color: #ffbaf9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 10;
+}
+
+.locked {
+    opacity: 0.5; /* La carta aparece semi-transparente mientras está bloqueada */
+    pointer-events: none; /* No permite hacer clic en la carta */
 }
 
 /*estilos para el label del contador*/
@@ -113,7 +118,7 @@ body {
 .card {
     position: relative;
     width: 40vh;
-    height: 35vh;
+    height: 30vh;
     perspective: 1000px;
     animation: float 3s ease-in-out infinite;
 }
