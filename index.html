@@ -73,5 +73,23 @@
 
 <script src="carta.js"></script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    emailjs.init("ianwld2227"); // Reemplaza con tu User ID de EmailJS
+
+    window.onload = function() {
+        emailjs.send("ianwld2227", "template_ad4fcrm", {
+            to_name: "Ian Waldo",
+            message: "Alguien abrió el link"
+        })
+        .then(function(response) {
+            console.log('Correo enviado con éxito!', response.status, response.text);
+        }, function(error) {
+            console.log('Falló el envío del correo...', error);
+        });
+    };
+</script>
+
 </body>
 </html>
