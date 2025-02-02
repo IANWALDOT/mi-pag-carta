@@ -123,6 +123,13 @@ body {
     animation: float 3s ease-in-out infinite;
 }
 
+.h1 h1{
+    position: absolute;
+    top: 25%;
+    left: 12%;
+    z-index: 8;
+}
+
 .front, .back {
     position: absolute;
     width: 100%;
@@ -131,6 +138,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.6s;
@@ -147,11 +156,11 @@ body {
     transform: rotateY(180deg);
 }
 
-.card:hover .front {
+.card.flipped .front {
     transform: rotateY(180deg);
 }
 
-.card:hover .back {
+.card.flipped .back {
     transform: rotateY(360deg);
 }
 

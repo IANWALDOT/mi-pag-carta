@@ -31,47 +31,9 @@ function openEnvelope() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  const unlockTimeKey = "unlockTime";
-  const countdownElement = document.getElementById("countdown2");
-  const cardContainer = document.getElementById("card-container");
-  const envelope = document.querySelector('.envelope');
-  const card = document.querySelector('.card');
+  const card = document.querySelector(".card");
 
-  // 🔹 FORZAR NUEVO TIEMPO: Borra cualquier tiempo anterior
-  localStorage.removeItem(unlockTimeKey);
-
-  // 🔹 NUEVO TIEMPO: Cambia este valor al que desees
-  let unlockTime = new Date();
-  unlockTime.setMinutes(unlockTime.getMinutes() + 1); // Cambia aquí el tiempo (ej. 5, 10, etc.)
-
-  // 🔹 GUARDA EL NUEVO TIEMPO en localStorage
-  localStorage.setItem(unlockTimeKey, unlockTime.getTime());
-
-  function updateCountdown() {
-      const now = new Date();
-      const storedTime = localStorage.getItem(unlockTimeKey);
-      const unlockTime = new Date(parseInt(storedTime));
-      const timeLeft = unlockTime - now;
-
-      if (timeLeft <= 0) {
-          countdownElement.innerHTML = "¡Carta desbloqueada!";
-          envelope.onclick = openEnvelope;
-          cardContainer.classList.remove("locked");
-          card.style.pointerEvents = "auto";
-          return;
-      }
-
-      const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-      countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
-
-      envelope.onclick = null;
-      card.style.pointerEvents = "none";
-
-      setTimeout(updateCountdown, 1000);
-  }
-
-  updateCountdown();
+  card.addEventListener("click", function () {
+      card.classList.toggle("flipped");
+  });
 });
